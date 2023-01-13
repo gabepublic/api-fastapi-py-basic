@@ -16,21 +16,44 @@ Source:
 ## SETUP
 - Activate the virtual environment
 ```
-C:\> cd <projectFolder>\api-fastapi-py-basic
-C:\> pipenv shell
+C:\>cd <projectFolder>\api-fastapi-py-basic
+C:\>pipenv shell
 (api-fastapi-py-basic-R5wfDv9q) C:\>
 ```
-
 - Install python package `fastapi`, and `uvicorn`
 ```
 (api-fastapi-py-basic-R5wfDv9q) $ pipenv install fastapi uvicorn 
+```
+  - [Uvicorn](https://www.uvicorn.org/) is an ASGI web server 
+    implementation for Python, a minimal low-level server/application
+    interface for async frameworks.
+
+- Install [pydantic](https://docs.pydantic.dev/), the data validation 
+  and settings management using Python type annotations. `pydantic` 
+  enforces type hints at runtime, and provides user friendly errors 
+  when data is invalid. Define how data should be in pure, canonical 
+  Python; validate it with pydantic.
+```
+(api-fastapi-py-basic-R5wfDv9q) C:\>pipenv install pydantic
+```
+
+- Install development packages:
+  - `mypy` - a static type checker for Python
+  - `pytes` - framework that makes it easy to write small, readable 
+    tests, and can scale to support complex functional testing for
+    applications and libraries.
+```
+(api-fastapi-py-basic-R5wfDv9q) C:\>pipenv install --dev mypy pytest
+(api-fastapi-py-basic-R5wfDv9q) C:\>pytest --version
+pytest 7.2.0
+(api-fastapi-py-basic-R5wfDv9q) C:\>
 ```
 
 - Alternatively, if you clone this repo, the `Pipfile` is included so
   just run the following:
 ```
-C:\> cd <projectFolder>\api-fastapi-py-basic
-C:\> pipenv shell
+C:\>cd <projectFolder>\api-fastapi-py-basic
+C:\>pipenv shell
 (api-fastapi-py-basic-R5wfDv9q) C:\>pipenv install
 ```
 
@@ -48,7 +71,7 @@ C:\> pipenv shell
 
 - Run
 ```
-(api-fastapi-py-basic-R5wfDv9q) C:\>uvicorn main:app --reload
+(api-fastapi-py-basic-R5wfDv9q) C:\>uvicorn app.main:app --reload
 INFO:     Started server process [20884]
 INFO:     Waiting for application startup.
 INFO:     Application startup complete.
@@ -58,3 +81,20 @@ INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
 - Open browser and go to API, `http://localhost:8000/`
 
 - Open browser and go to API docs, `http://localhost:8000/docs`
+
+## TEST
+
+### Prerequisite
+
+- `pytest` has been installed
+- all the test files are stored in the `tests` folder
+- NOTE: the test file need to be prepended wijt `test_`, otherwise
+  the file will not be included.
+
+### Smoke
+
+- Run the smoke test; add verbosity using (`-v`, `-vv`, etc.)
+```
+(api-fastapi-py-basic-R5wfDv9q) C:\>cd <projectFolder>\api-fastapi-py-basic
+(api-fastapi-py-basic-R5wfDv9q) C:\>pytest -v tests\test_smoke.py
+```
