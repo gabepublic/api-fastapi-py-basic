@@ -10,11 +10,20 @@ Source:
 
 ## Prerequisite
 
+- (Updated Mar 2025) - use `virtualenv`
+
 - Python environment (Python, pip, pipenv)
   See [Setup > Dev Environment > Python](https://digitalcompanion.gitbook.io/home/)
 
 ## SETUP
-- Activate the virtual environment
+
+- (Updated Mar 2025) - create & activate the python virtual environment
+```
+virtualenv --python="python311" ".venv"
+.venv\Scripts\activate
+```
+
+- (Optional) Activate the virtual environment
 ```
 C:\>cd <projectFolder>\api-fastapi-py-basic
 C:\>pipenv shell
